@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 from flask import Flask
 from flasgger import Swagger
+from flask_cors import CORS
 from routes import routes  
 
 sys.path.append(str(Path(__file__).parent))
@@ -12,6 +13,7 @@ app = Flask(
     static_folder='static'
 )
 
+CORS(app) 
 app.register_blueprint(routes, url_prefix="/api")  
 
 swagger = Swagger(app)
