@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template 
 
 routes = Blueprint('routes', __name__)
 
@@ -7,6 +7,11 @@ products = [
     {'id': 1, 'name': 'Fish Fillet', 'category': 'Fish', 'description': 'Fresh fish fillet'},
     {'id': 2, 'name': 'Fish Ball', 'category': 'Fish', 'description': 'Fish ball made of minced fish'}
 ]
+
+@routes.route('/')
+def home():
+    return render_template('index.html')
+
 
 @routes.route('/products', methods=['GET'])
 def get_products():
