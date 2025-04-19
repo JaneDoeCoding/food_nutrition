@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   container.appendChild(loading);
 
   // Fetch product data from the API
-  fetch('/api/products')
+  fetch('https://fish-product-api-6.onrender.com/api/products')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
