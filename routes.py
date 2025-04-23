@@ -4,9 +4,62 @@ routes = Blueprint('routes', __name__)
 
 # 产品数据存储在内存中（实际项目请用数据库）
 products = [
-    {'id': 1, 'name': 'Fish Fillet', 'category': 'Fish', 'description': 'Fresh fish fillet'},
-    {'id': 2, 'name': 'Fish Ball', 'category': 'Fish', 'description': 'Fish ball made of minced fish'}
+    {
+        'id': 1,
+        'name': 'Fish Fillet',
+        'category': 'Fish',
+        'description': 'Fresh fish fillet',
+        'protein': '20.5 g',  # 添加单位
+        'fat': '3.2 g',       # 添加单位
+        'calories': '120 kcal' # 添加单位
+    },
+    {
+        'id': 2,
+        'name': 'Salmon Steak',
+        'category': 'Fish',
+        'description': 'Rich in Omega-3',
+        'protein': '25.0 g',  # 添加单位
+        'fat': '13.0 g',      # 添加单位
+        'calories': '208 kcal' # 添加单位
+    },
+    {
+        'id': 3,
+        'name': 'Tuna Can',
+        'category': 'Seafood',
+        'description': 'Canned tuna chunks in water',
+        'protein': '23.5 g',  # 添加单位
+        'fat': '1.0 g',       # 添加单位
+        'calories': '98 kcal' # 添加单位
+    },
+    {
+        'id': 4,
+        'name': 'Cod Fish Fillet',
+        'category': 'Fish',
+        'description': 'Lean and mild-flavored fish',
+        'protein': '18.0 g',  # 添加单位
+        'fat': '1.5 g',       # 添加单位
+        'calories': '85 kcal' # 添加单位
+    },
+    {
+        'id': 5,
+        'name': 'Mackerel',
+        'category': 'Fish',
+        'description': 'Fatty fish rich in Omega-3',
+        'protein': '22.0 g',  # 添加单位
+        'fat': '17.0 g',      # 添加单位
+        'calories': '205 kcal' # 添加单位
+    },
+    {
+        'id': 6,
+        'name': 'Shrimp',
+        'category': 'Seafood',
+        'description': 'Low-calorie, high-protein seafood',
+        'protein': '24.0 g',  # 添加单位
+        'fat': '0.5 g',       # 添加单位
+        'calories': '99 kcal' # 添加单位
+    }
 ]
+
 
 @routes.route('/')
 def home():
