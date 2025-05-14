@@ -1,0 +1,89 @@
+/* src/components/ComparisonView.css */
+
+.comparison-view-container {
+    padding: 20px;
+    max-width: 1200px; /* 适当增加宽度以容纳多个对比列 */
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* 如果表格太宽出现横向滚动条 */
+}
+
+.comparison-view-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.comparison-table-wrapper {
+    margin-top: 15px;
+}
+
+.comparison-view-container table {
+    width: 100%; /* 表格宽度 */
+    border-collapse: collapse;
+    background-color: #fff;
+    table-layout: fixed; /* 固定列布局，防止列宽不均 */
+}
+
+.comparison-view-container th,
+.comparison-view-container td {
+    padding: 10px 12px; /* 调整内边距 */
+    border: 1px solid #eee; /* 添加边框 */
+    text-align: left;
+    color: #333;
+    word-break: break-word; /* 允许长文本换行 */
+}
+
+.comparison-view-container thead th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase; /* 表头大写 */
+    font-size: 0.9rem;
+    /* 设置列的最小宽度，防止内容过多挤压 */
+    min-width: 120px; /* 示例值，根据内容调整 */
+}
+
+.comparison-view-container tbody td:first-child {
+    font-weight: bold; /* 属性名称列加粗 */
+    background-color: #f8f8f8; /* 属性列背景色 */
+    position: sticky; /* 固定第一列 */
+    left: 0;
+    z-index: 1; /* 确保在滚动时显示在上面 */
+    min-width: 150px; /* 给属性列足够的宽度 */
+}
+
+/* 斑马纹效果 */
+.comparison-view-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 加载中, 错误, 无数据消息样式 */
+.loading, .error, .no-comparison-data {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 50px;
+    color: #555;
+}
+
+.error {
+    color: #d9534f;
+}
+
+/* 响应式调整（可以根据需要进一步细化）*/
+@media (max-width: 768px) {
+   .comparison-view-container {
+       padding: 10px;
+   }
+    .comparison-view-container th,
+    .comparison-view-container td {
+        padding: 8px;
+        min-width: 100px; /* 小屏幕下减小最小列宽 */
+    }
+    .comparison-view-container tbody td:first-child {
+        min-width: 120px; /* 小屏幕下减小属性列宽度 */
+    }
+}

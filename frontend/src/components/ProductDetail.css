@@ -1,0 +1,51 @@
+/* src/components/ProductDetail.css */
+
+.product-detail-container {
+    padding: 20px;
+    max-width: 800px; /* 控制详情页宽度 */
+    margin: 20px auto; /* 居中显示，并留出顶部间距 */
+    background-color: #fff; /* 白底 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.detail-table-wrapper {
+    margin-top: 15px;
+}
+
+.product-detail-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-detail-container td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.product-detail-container td:first-child {
+    font-weight: bold; /* 属性名称加粗 */
+    width: 40%; /* 控制属性列的宽度 */
+    color: #555;
+}
+
+/* 可以添加加载中和错误状态的样式 */
+.loading, .error, .no-product {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 50px;
+    color: #555;
+}
+
+.error {
+    color: red;
+}
