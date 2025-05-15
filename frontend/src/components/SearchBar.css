@@ -1,0 +1,64 @@
+/* src/components/SearchBar.css */
+
+.search-bar-container {
+    display: flex; /* 使用 flexbox 布局输入框和按钮 */
+    margin-bottom: 20px; /* 搜索框下方留出间距 */
+    justify-content: center; /* 水平居中搜索框和按钮 */
+    padding: 0 20px; /* 左右内边距 */
+    max-width: 600px; /* 限制搜索框最大宽度 */
+    margin-left: auto;
+    margin-right: auto; /* 配合 max-width 实现居中 */
+}
+
+.search-input {
+    flex-grow: 1; /* 输入框占据剩余空间 */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; /* 左侧圆角 */
+    font-size: 1rem;
+    outline: none; /* 移除默认轮廓 */
+    transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: #007bff; /* 聚焦时边框颜色变化 */
+}
+
+.search-button {
+    padding: 10px 15px;
+    background-color: #007bff; /* 蓝色背景 */
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 0 4px 4px 0; /* 右侧圆角 */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* 悬停变深 */
+    border-color: #0056b3;
+}
+
+/* 响应式调整 */
+@media (max-width: 600px) {
+    .search-bar-container {
+        flex-direction: column; /* 小屏幕上垂直布局 */
+        align-items: stretch; /* 子项拉伸填满宽度 */
+        padding: 0 10px;
+    }
+
+    .search-input,
+    .search-button {
+        border-radius: 4px; /* 小屏幕上都变为圆角 */
+        margin-bottom: 10px; /* 输入框下方留出间距 */
+    }
+
+    .search-input {
+        margin-bottom: 10px; /* 输入框下方留出间距 */
+    }
+
+     .search-button {
+         margin-bottom: 0; /* 移除按钮下方间距 */
+     }
+}

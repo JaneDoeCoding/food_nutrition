@@ -41,7 +41,7 @@
     background-color: #f2f2f2;
     font-weight: bold;
     color: #555;
-    text-transform: uppercase; /* 表头大写 */
+    text-transform: none; /* 表头不大写 */
     font-size: 0.9rem;
     /* 设置列的最小宽度，防止内容过多挤压 */
     min-width: 120px; /* 示例值，根据内容调整 */

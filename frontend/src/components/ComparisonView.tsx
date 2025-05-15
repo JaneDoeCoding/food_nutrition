@@ -12,7 +12,7 @@ const ComparisonView: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const backendUrl = 'http://172.16.10.246:5000';
+    const backendUrl = 'http://192.168.11.229:5000';
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
@@ -118,7 +118,7 @@ const ComparisonView: React.FC = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Nutrient / Item</th>
+                            <th>Nutrient/Item</th>
                             {comparedProducts.map(product => (
                                 <th key={product.id}>{product['Food Name']}</th>
                             ))}
