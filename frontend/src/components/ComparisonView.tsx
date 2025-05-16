@@ -13,7 +13,7 @@ const ComparisonView: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const backendUrl = 'http://192.168.11.229:5000';
+    const backendUrl = 'https://newbackend-8mgs.onrender.com';
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);

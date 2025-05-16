@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
     setLoading(true); // 开始搜索时设置加载状态
     setError(null); // 清空之前的错误
 
-    const backendUrl = 'http://192.168.11.229:5000'; // 请再次确认这是您正确的后端地址
+    const backendUrl = 'https://newbackend-8mgs.onrender.com'; // 请再次确认这是您正确的后端地址
     const endpoint = '/api/products'; // <-- 正确的搜索接口路径
     // 参数名是 'query'
     const queryParam = `query=${encodeURIComponent(searchTerm)}`; // <-- 正确的参数名和构建方式
@@ -108,7 +108,7 @@ const HomePage: React.FC = () => {
        const fetchAllProducts = async () => {
             setLoading(true);
             setError(null);
-            const backendUrl = 'http://192.168.11.229:5000'; // 请确认后端地址
+            const backendUrl = 'https://newbackend-8mgs.onrender.com'; // 请确认后端地址
             const endpoint = '/api/products';
 
             try {

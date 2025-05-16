@@ -31,7 +31,7 @@ const ProductDetail: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const backendUrl = 'http://192.168.11.229:5000'; // 后端地址（请根据实际情况修改）
+  const backendUrl = 'https://newbackend-8mgs.onrender.com'; // 后端地址（请根据实际情况修改）
 
   useEffect(() => {
     if (!id) {
