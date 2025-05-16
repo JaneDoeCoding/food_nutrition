@@ -4,6 +4,9 @@ import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
 import ComparisonBar from '../components/ComparisonBar'; // 确保 ComparisonBar 已导入
 import { useNavigate } from 'react-router-dom'; // 用于跳转到对比页
+import './HomePage.css';
+import HomepageImage from '../assets/images/Homepage.jpg';
+
 
 // 定义产品对象的类型（确保与后端 /api/products 接口返回的简略数据结构匹配）
 // 根据您的 routes.py 代码，简略接口返回的键有 'id', 'Food Name', 'Edible Part', 'Water Content', 'Energy'
@@ -21,14 +24,13 @@ interface Product {
 
 
 const HomePage: React.FC = () => {
-  const navigate = useNavigate(); // 获取导航函数
+  const navigate = useNavigate();
 
   const [searchResults, setSearchResults] = useState<Product[]>([]);
-  // selectedProductIds 存储的是已选中的产品 ID 列表
   const [selectedProductIds, setSelectedProductIds] = useState<Array<string | number>>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [currentSearchTerm, setCurrentSearchTerm] = useState(''); // 新增：存储当前搜索词，用于判断是否刚进行了搜索但无结果
+  const [currentSearchTerm, setCurrentSearchTerm] = useState('');
 
 
   // 处理搜索逻辑
@@ -62,7 +64,7 @@ const HomePage: React.FC = () => {
          // 后端返回 404 表示没有找到产品
          console.log("搜索完成，但没有找到产品（404）。");
          setSearchResults([]); // 清空结果列表
-         setError(null); // 404 不是一个需要显示给用户的“错误”，而是“无结果”
+         setError(null); // 404 不是一个需要显示给用户的"错误"，而是"无结果"
          return; // 处理完 404 就返回
       }
 
@@ -180,53 +182,55 @@ const HomePage: React.FC = () => {
         return selectedProductIds.length >= 4 && !selectedProductIds.includes(productId);
    };
 
+    return (
+      <div
+        className="home-container"
+        style={{ backgroundImage: `url(${HomepageImage})` }}
+      >
+        <div className="home-overlay">
+          <div className="home-header">
+            <h1 className="home-title">Fish Nutrition Information Platform</h1>
+            <p className="home-subtitle">
+              Check the fish, eat what you wish
+            </p>
+          </div>
+          
+          <div className="search-container">
+            <SearchBar onSearch={handleSearch} />
+          </div>
 
-  return (
-    <div>
-      <h1>Fish Nutrition Information Platform</h1>
-      <p style={{ fontStyle: 'italic', marginBottom: '10px' }}>
-        Check the fish, eat what you wish
-      </p>
-      <SearchBar onSearch={handleSearch} />
+          <div className="results-container">
+            {loading && <div className="loading-message">加载中...</div>}
+            {error && <div className="error-message">{error}</div>}
 
-      <div style={{ marginTop: '20px' }}>
-          {loading && <div>加载中...</div>}
-          {error && <div style={{ color: 'red' }}>{error}</div>}
+            {!loading && !error && searchResults.length > 0 && (
+              <ProductList
+                products={searchResults}
+                selectedIds={selectedProductIds}
+                onToggleSelect={handleToggleProductSelected}
+              />
+            )}
 
-          {/* 根据 searchResults 数组的长度、loading 和 error 状态来决定是否显示 ProductList */}
-          {/* 当不处于加载中，没有错误，并且 searchResults 有数据时显示 ProductList */}
-          {!loading && !error && searchResults.length > 0 && (
-            <ProductList
-              products={searchResults}
-              selectedIds={selectedProductIds}
-              onToggleSelect={handleToggleProductSelected}
-            />
-          )}
+            {!loading && !error && searchResults.length === 0 && currentSearchTerm.trim() && (
+              <div className="no-results-message">No matching products found. You can try fish like Salmon, Mackerel, Halibut, etc.</div>
+            )}
+            {!loading && !error && searchResults.length === 0 && !currentSearchTerm.trim() && (
+              <></>
+            )}
+          </div>
 
-           {/* 如果搜索完成（不加载，无错误，且用户确实搜索了）但没有结果，显示无结果消息 */}
-           {!loading && !error && searchResults.length === 0 && currentSearchTerm.trim() && (
-               <div style={{marginTop: '10px'}}>没有找到匹配的产品。</div>
-           )}
-            {/* 如果页面刚加载，没有搜索，也没有初始列表，可以显示一些欢迎信息 */}
-            {!loading && !error && searchResults.length === 0 && !currentSearchTerm.trim() && (
-  <></>
-)}
-
-      </div>
-
-
-      {/* ComparisonBar 根据选中产品数量决定是否显示 */}
-      {searchResults.length > 0 && ( 
-        <ComparisonBar
-          selectedProducts={searchResults.filter(product => selectedProductIds.includes(product.id))}
-          selectedCount={selectedProductIds.length}
-          onClear={handleClearComparison}
-          onCompare={handleCompareProducts}
-          isCompareEnabled={isCompareButtonEnabled}
-        />
-      )}
-    </div>
-  );
-};
+          {searchResults.length > 0 && ( 
+            <ComparisonBar
+              selectedProducts={searchResults.filter(product => selectedProductIds.includes(product.id))}
+              selectedCount={selectedProductIds.length}
+              onClear={handleClearComparison}
+              onCompare={handleCompareProducts}
+              isCompareEnabled={isCompareButtonEnabled}
+            />
+          )}
+        </div>
+      </div>
+    );
+  };
 
 export default HomePage;

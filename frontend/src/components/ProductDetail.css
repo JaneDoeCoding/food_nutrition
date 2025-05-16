@@ -1,51 +1,97 @@
-/* src/components/ProductDetail.css */
+.product-detail-content {
+    max-width: 600px; /* 限制最大宽度 */
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    border-radius: 10px;
+    color: #fff;
 
-.product-detail-container {
-    padding: 20px;
-    max-width: 800px; /* 控制详情页宽度 */
-    margin: 20px auto; /* 居中显示，并留出顶部间距 */
-    background-color: #fff; /* 白底 */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    margin: 0 auto; /* 水平居中 */
 }
 
-.product-detail-container h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-}
 
-.detail-table-wrapper {
-    margin-top: 15px;
-}
-
-.product-detail-container table {
+.product-detail-content table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* 固定布局 */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
 }
 
-.product-detail-container td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee;
-    color: #333;
+/* 表头两列宽度分别设置 */
+.product-detail-content thead th:first-child {
+    width: 40%; /* 第一列宽度 */
 }
 
-.product-detail-container td:first-child {
-    font-weight: bold; /* 属性名称加粗 */
-    width: 40%; /* 控制属性列的宽度 */
-    color: #555;
+.product-detail-content thead th:nth-child(2) {
+    width: 60%; /* 第二列宽度 */
 }
 
-/* 可以添加加载中和错误状态的样式 */
+/* 内容区两列宽度同表头对应 */
+.product-detail-content tbody td:first-child {
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 40%;
+    min-width: 150px;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    word-break: break-word;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.product-detail-content tbody td:nth-child(2) {
+    width: 60%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    word-break: break-word;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.product-detail-content tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
 .loading, .error, .no-product {
     text-align: center;
     font-size: 1.2rem;
-    margin-top: 50px;
-    color: #555;
+    margin-top: 3rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+.error {
+    color: #ff8888;
 }
 
-.error {
-    color: red;
+/* 响应式：小屏幕适配 */
+@media (max-width: 768px) {
+    .product-detail-container {
+        padding: 1rem;
+    }
+
+    .product-detail-content {
+        padding: 1rem;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .product-detail-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .product-detail-content thead th,
+    .product-detail-content tbody td {
+        padding: 8px 10px;
+        min-width: 100px;
+    }
+
+    .product-detail-content tbody td:first-child {
+        min-width: 120px;
+    }
 }

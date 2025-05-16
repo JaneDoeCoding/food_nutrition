@@ -1,0 +1,319 @@
+/* src/pages/HomePage.css */
+
+/*
+ * HomePage 页面整体容器样式
+ * 控制内容的整体布局、最小高度和背景
+ */
+.home-container {
+  width: 100%;   /* 确保容器铺满父容器的宽度 */
+  min-height: 100vh; /* 确保容器至少占据整个视口的高度 */
+  margin: 0;     /* 重置外边距 */
+  padding: 2rem; /* 默认内边距 */
+
+  /* --- 往上挪：通过 padding-top 将内容块向下推开顶部空间 --- */
+  /* 根据需要调整这个值，值越大内容块整体越往下（相对视口顶部向上挪） */
+  padding-top: 10vh; /* 示例：距离顶部视口高度的 10% */
+
+  background-color: transparent; /* 如果你的背景图在 body 或 html 上，这里设置为透明 */
+  /* 如果背景图设置在这个容器上，需要在这里设置背景图相关属性 */
+  /* background-image: url('../assets/your-background-image.jpg'); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+
+  display: flex; /* 使用 Flexbox 布局 */
+  flex-direction: column; /* 子元素（页眉、搜索框区域）垂直排列 */
+  align-items: center; /* 子元素在交叉轴（水平方向）上居中 */
+
+  /* --- 往上挪：移除可能的垂直居中设置 --- */
+  /* 如果在别处设置了 justify-content: center; 需要在这里覆盖它 */
+  /* justify-content: flex-start; /* 让子元素靠顶部排列，结合 padding-top 使用 */
+
+  position: relative; /* 如果有绝对定位的子元素，这是必需的 */
+   /* 边框和内边距不增加元素总尺寸 */
+}
+
+/*
+ * 页眉区域样式 (包含标题和副标题)
+ * 控制页眉的宽度和对齐方式
+ */
+.home-header {
+  text-align: center; /* 让页眉内部的文本居中 */
+  margin: 2rem 0 4rem; /* 页眉的上下外边距 */
+  width: 100%; /* 确保页眉占据其父容器（.home-container）的全部宽度 */
+   /* 限制页眉内容的最大宽度 */
+}
+
+/*
+ * 标题 (H1) 样式
+ * 调整字体大小、颜色和特色
+ */
+.home-title {
+  font-size: 3 rem;              /* 字号保持，适合大屏 */
+  font-weight: 700;               /* 保留加粗，突出标题 */
+  color: #ffffff;                 /* 白色在海洋背景上依然合适 */
+
+  font-family: 'Playfair Display', serif; /* 推荐衬线字体，权威且优雅 */
+  
+  text-align: center;             /* 居中排版，更加大气 */
+  margin-bottom: 15px;           /* 与副标题或内容间隔开一点 */
+
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35); /* 稍强一点的阴影，增强层次感 */
+
+  letter-spacing: 1px;           /* 字母间距，提升阅读体验 */
+}
+
+
+/*
+ * 副标题 (P) 样式
+ * 调整字体大小和颜色
+ */
+.home-subtitle {
+  font-size: 1.5rem; /* 调整副标题字号，示例：稍微大一些 */
+  font-weight: 400; /* 字体粗细，示例：可以不那么粗 */
+
+  /* --- 字体颜色：修改这里的样式 --- */
+  color: #f0f8ff; /* 示例颜色：浅灰色，与白色标题搭配 */
+  /* 根据背景图调整颜色 */
+
+  /* --- 字体特色：设置字体家族 --- */
+  /* 请替换为你想要的有特色的字体，通常与标题使用相同或搭配的字体 */
+  font-family: 'Lato', sans-serif; /* 示例字体名 */
+
+  margin-bottom: 2rem; /* 副标题下方留白 */
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/*
+ * 搜索框区域容器样式
+ * 控制搜索框整体的宽度和在页眉下方的间距
+ */
+.search-container {
+  width: 100%; /* 确保搜索容器占据其父容器（.home-container）的全部宽度 */
+  max-width: 800px; /* 限制搜索容器内容的最大宽度 */
+  margin: 0 auto 3rem; /* 左右自动外边距居中，下方留白 */
+  padding: 0 1rem; /* 左右内边距，防止内容紧贴边缘 */
+  display: flex; /* 使用 Flexbox 布局 */
+  justify-content: center; /* 使搜索表单在搜索容器内水平居中 */
+}
+
+/*
+ * 搜索表单样式 (包含输入框和按钮)
+ * 控制输入框和按钮的布局和间距
+ */
+.search-container form {
+  display: flex; /* 使用 Flexbox */
+  gap: 10px; /* 输入框和按钮之间的间距 */
+  width: 100%; /* 确保表单占据其父容器（.search-container）的全部宽度 */
+  max-width: 600px; /* 限制表单整体的最大宽度 */
+}
+
+/*
+ * 搜索输入框样式
+ */
+.search-container input {
+  flex: 1; /* 输入框弹性伸缩，占据剩余空间 */
+  padding: 1.2rem 1.5rem; /* 内边距 */
+  font-size: 1.2rem; /* 字号 */
+  border: 2px solid #e0e0e0; /* 边框 */
+  border-radius: 12px; /* 圆角 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* 阴影 */
+  transition: all 0.3s ease; /* 过渡效果 */
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+
+  
+}
+
+/*
+ * 搜索输入框获取焦点时的样式
+ */
+.search-container input:focus {
+  outline: none; /* 移除默认焦点轮廓 */
+  border-color: #3498db; /* 焦点时边框颜色 */
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.15); /* 焦点时阴影 */
+}
+
+/*
+ * 搜索输入框占位符文本样式
+ */
+.search-container input::placeholder {
+  color: #b0c4de; /* 比你现在的 #bdc3c7 更清爽、蓝调 */
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+/*
+ * 搜索按钮样式 (请确保 SearchBar 组件中的按钮有对应的类名或结构)
+ * 如果 SearchBar 组件内部按钮有类名如 .search-button，请使用 .search-container .search-button { ... }
+ */
+
+.search-container button {
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+}
+
+.search-container button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+
+/* 错误提示（如输入非法字符、请求失败等） */
+.error-message {
+  text-align: center;
+  color: #e74c3c; /* 鲜明的红色，提示错误 */
+  background-color: #fdecea; /* 更柔和的背景红 */
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.08);
+  line-height: 1.6;
+}
+
+/* 无结果提示（如搜索无匹配结果） */
+.no-results-message {
+  text-align: center;
+  color: #ffffff; /* 更沉稳的灰蓝色 */
+
+  padding: 2.5rem 2rem;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-family: 'Lato', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.08);
+  line-height: 1.6;
+}
+
+
+/* 固定底部比较栏 */
+.comparison-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3); /* 半透明白色 */
+  backdrop-filter: blur(2.5px); /* 背景模糊：关键！增加质感 */
+  -webkit-backdrop-filter: blur(10px); /* Safari 支持 */
+
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-sizing: border-box;
+  
+}
+
+.homepage {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.site-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+
+.home-container {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+    padding-bottom: 100px; /* 移动端底部留更多空间 */
+  }
+
+  .home-header {
+    margin: 1rem 0 2rem;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .search-container {
+    padding: 0 0.5rem;
+  }
+
+  .search-container form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .search-container input,
+  .search-container button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .results-container {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .comparison-bar {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0.8rem;
+    padding-bottom: 120px;
+  }
+
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .search-container {
+    padding: 0 0.3rem;
+  }
+}
+

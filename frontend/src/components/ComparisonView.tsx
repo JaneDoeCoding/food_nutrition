@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './ComparisonView.css';
+import Page2Image from '../assets/images/Page3.jpg';
 
 // ... (ProductDetailData 接口定义保持不变) ...
 
@@ -111,37 +112,48 @@ const ComparisonView: React.FC = () => {
     console.log("Fields to display length (during render):", fieldsToDisplay.length);
 
     return (
-        <div className="comparison-view-container">
+        <div
+            className="comparison-view-container"
+            style={{
+            backgroundImage: `url(${Page2Image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            minHeight: '100vh',
+            padding: '2rem', // 可选：让内容不要贴边
+            }}
+        >
             <h2>Product Comparison</h2>
 
             <div className="comparison-table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nutrient/Item</th>
-                            {comparedProducts.map(product => (
-                                <th key={product.id}>{product['Food Name']}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {fieldsToDisplay.map(field => (
-                            <tr key={field as string}>
-                                <td>{field}</td>
-                                {comparedProducts.map(product => (
-                                    <td key={product.id}>
-                                        {(product[field] !== undefined && product[field] !== null && product[field] !== '')
-                                            ? (product[field] as React.ReactNode)
-                                            : 'N/A'}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutrient/Item</th>
+                    {comparedProducts.map(product => (
+                    <th key={product.id}>{product['Food Name']}</th>
+                    ))}
+                </tr>
+                </thead>
+                <tbody>
+                {fieldsToDisplay.map(field => (
+                    <tr key={field as string}>
+                    <td>{field}</td>
+                    {comparedProducts.map(product => (
+                        <td key={product.id}>
+                        {(product[field] !== undefined &&
+                            product[field] !== null &&
+                            product[field] !== '')
+                            ? (product[field] as React.ReactNode)
+                            : 'N/A'}
+                        </td>
+                    ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>
             </div>
         </div>
-    );
+        );
 };
 
 export default ComparisonView;

@@ -1,158 +1,115 @@
-/* ProductList.css */
-
-/* 页面背景和布局 */
-/* 移除原来的背景渐变，改为白底 */
-body {
-  background-color: #fff; /* 白底 */
-  color: #333; /* 默认文本颜色改为深色 */
-  font-family: 'Lato', sans-serif; /* 使用合适的字体 */
-  margin: 0;
-  padding: 0;
-  line-height: 1.6; /* 提高行高，增加可读性 */
-}
-
-/* product-list-container 用于整体布局 */
+/* 产品列表容器完全透明，无背景框 */
 .product-list-container {
-  padding: 20px; /* 调整内边距 */
-  max-width: 1000px; /* 限制内容最大宽度 */
-  margin: 20px auto; /* 居中显示，并留出顶部和底部间距 */
-  background-color: #fff; /* 容器背景色确保在白底body上内容不透明 */
-  border-radius: 8px; /* 添加一点圆角 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 添加一些柔和的阴影 */
+  padding: 20px;
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: transparent; /* 透明 */
+  border-radius: 0; /* 去圆角 */
+  box-shadow: none;
+  color: #fff; /* 默认文字白色 */
 }
 
-
-/* 页面标题 - 调整样式以适应白底，并可选择是否保留 */
+/* 标题白色文字带阴影 */
 .product-list-container h2 {
   text-align: center;
-  font-size: 2rem; /* 调整字体大小 */
+  font-size: 2rem;
   font-weight: bold;
-  color: #333; /* 标题颜色改为深色 */
-  margin-top: 0; /* 移除顶部默认间距 */
-  margin-bottom: 20px; /* 底部间距 */
-  font-family: 'Poppins', sans-serif; /* 使用合适的字体 */
-  /* 移除文字渐变 */
-  background: none;
-  -webkit-background-clip: unset;
-  color: #333;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-/* 移除卡片相关的样式 */
-/* 这些是之前ProductList.css中用于卡片布局的样式，现在改为表格，可以删除 */
-/*
-.cards-container { ... }
-.product-card { ... }
-.product-card:hover { ... }
-.product-card img { ... }
-.product-card h3 { ... }
-.product-card p { ... }
-.product-card .price { ... }
-.nutrition-info { ... }
-.nutrition-info p { ... }
-.product-card .category { ... }
-.product-card .category-content { ... }
-*/
-
-/* 添加表格容器样式 */
+/* 表格容器透明 */
 .product-table-wrapper {
-    margin-top: 0; /* 表格紧随标题 */
-    /* border: 1px solid #ddd; /* 添加外边框 */ /* 可以选择是否要外边框 */
-    border-radius: 8px;
-    overflow: hidden; /* 确保圆角生效 */
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加一些阴影 */ /* 可以选择是否要阴影 */
+  margin-top: 0;
+  border-radius: 0;
+  overflow: visible;
 }
 
-/* 表格样式 */
+/* 表格透明铺在背景图上 */
 .product-list-container table {
-  width: 100%; /* 表格宽度占满容器 */
-  border-collapse: collapse; /* 合并边框 */
-  background-color: #fff; /* 表格背景白色 */
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent; /* 透明 */
 }
 
-/* 表头样式 */
+/* 表头轻微暗底，半透明黑 */
 .product-list-container thead {
-  background-color: #f2f2f2; /* 表头背景色 */
+  background-color: rgba(0, 0, 0, 0.25); /* 非常轻微暗底 */
 }
 
+/* 表头文字白色加阴影 */
 .product-list-container th {
   padding: 12px 15px;
-  text-align: left; /* 表头文字左对齐 */
+  text-align: left;
   font-weight: bold;
-  color: #555; /* 表头文字颜色 */
-  border-bottom: 2px solid #ddd; /* 表头底部使用稍粗的边框 */
-  font-size: 0.9rem; /* 表头字体稍小 */
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
 }
 
-/* 表格数据行样式 */
+/* 数据单元格文字白色加阴影 */
 .product-list-container td {
   padding: 12px 15px;
-  border-bottom: 1px solid #eee; /* 数据行底部使用细边框 */
-  color: #333; /* 数据文本颜色 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
   font-size: 1rem;
+  background-color: transparent; /* 保持透明 */
 }
 
-/* 可点击行的样式和悬停效果 */
-.product-list-container tbody tr {
-  cursor: pointer; /* 鼠标悬停时显示手型，表示可点击 */
-  transition: background-color 0.2s ease; /* 添加背景色过渡效果 */
+/* 属性列（如第一列）轻微暗底区别层次 */
+.product-list-container td:first-child {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
+/* 鼠标悬停行微微亮 */
 .product-list-container tbody tr:hover {
-  background-color: #f9f9f9; /* 鼠标悬停时背景色变浅 */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 列表项内的复选框容器样式 */
+/* 复选框列居中 */
 .product-list-container td:last-child {
-    text-align: center; /* 复选框列居中 */
+  text-align: center;
 }
 
-/* 列表项内的复选框样式 */
+/* 复选框样式保持默认，保证操作清晰 */
 .product-list-container td input[type="checkbox"] {
-    margin: 0; /* 移除默认外边距 */
-    transform: scale(1.1); /* 稍微放大复选框 */ /* 可选 */
-    cursor: pointer; /* 确保复选框本身也有手型 */
+  margin: 0;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-/* 响应式设计 */
+/* 响应式调整 */
 @media (max-width: 768px) {
   .product-list-container {
-      padding: 10px;
+    padding: 10px;
   }
   th, td {
-    padding: 8px 10px; /* 减小内边距 */
+    padding: 8px 10px;
     font-size: 0.9rem;
   }
-  
-  /* 在小屏幕上可能需要调整某些列的显示方式 */
-  /* 例如隐藏一些列，或者使用 flexbox 布局 */
 }
 
-/* 可以根据需要为特定的列添加宽度或对齐样式 */
-/* 比如让食物名称列宽一点，数据列居中 */
-/*
-.product-list-container td:nth-child(1) { width: 30%; }
-.product-list-container td:nth-child(2),
-.product-list-container td:nth-child(3),
-.product-list-container td:nth-child(4) { text-align: center; }
-*/
-
-/* 加载中、错误、没有产品消息的样式 */
+/* 加载中、错误、无产品消息，透明底白字 */
 .product-list-container .loading,
 .product-list-container .error,
 .product-list-container .no-products {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    color: #555;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border: none;
 }
 
 .product-list-container .error {
-    color: #d9534f; /* 红色 */
-    border-color: #d9534f;
-    background-color: #f2dede;
+  color: #ff6b6b;
+  background-color: rgba(255, 0, 0, 0.3);
 }

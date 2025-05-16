@@ -5,14 +5,16 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    /* background-color: transparent;  外部容器本身已经是透明的 */
+    box-shadow: none;               /* 去除阴影 */
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
     box-sizing: border-box;
+
+    
 }
 
 .comparison-bar .comparison-content-left {
@@ -25,17 +27,17 @@
 
 /* --- 空槽位状态的布局样式 --- */
 .comparison-bar .comparison-slots-empty {
-     display: flex;
-     align-items: center;
-     width: 100%;
-     gap: 10px;
-     flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .comparison-bar .comparison-slots-empty .slot-title {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;  文本颜色可能需要根据背景图调整 
     margin-right: 15px;
     flex-shrink: 0;
 }
@@ -50,58 +52,55 @@
     justify-content: center;
 }
 
-
 .comparison-bar .comparison-slots-empty .empty-slot {
-    /* --- 增加宽度和高度，让文字能在一行显示 --- */
-    width: 180px; /* 示例值，进一步增加宽度 */
-    height: 70px; /* 示例值，可以根据需要调整高度 */
-    border: 1px solid #ddd;
+    width: 180px;
+    height: 70px;
+    /* --- 移除或调整边框和背景 --- */
+    border: 1px solid rgba(221, 221, 221, 0.5); /* 边框颜色可以调整透明度 */
+    background-color: transparent;                /* <-- 将空槽位的背景设为透明 */
     border-radius: 4px;
     display: flex;
-    flex-direction: column; /* 编号和文本垂直布局 */
-    /* --- 调整对齐方式，让内容往上调一点 --- */
-    justify-content: flex-start; /* 让内容靠顶部对齐 */
-    align-items: center; /* 水平居中 */
-    color: #aaa;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffffff;  文本颜色可能需要根据背景图调整 */
     box-sizing: border-box;
-    padding: 8px 5px; /* 增加顶部内边距，让内容整体下移一点，远离顶部边缘 */
-    text-align: center; /* 文本水平居中 */
-    overflow: hidden; /* 隐藏溢出文本 */
+    padding: 8px 5px;
+    text-align: center;
+    overflow: hidden;
+    /* 您可能需要添加 box-shadow: none; 如果它继承了阴影 */
 }
 
 /* Style for the number */
 .comparison-bar .comparison-slots-empty .slot-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ccc;
-    margin-bottom: 3px; /* 编号和文本的间距 */
+    color: #ffffff;  编号颜色可能需要根据背景图调整 
+    margin-bottom: 3px;
 }
 
 /* Style for the text inside the slot */
 .comparison-bar .comparison-slots-empty .slot-text {
-    font-size: 0.85rem; /* 字体大小 */
-    color: #666; /* 文本颜色 */
-    line-height: 1.3; /* 行高 */
-    /* 确保文本不会被强制换行，或者允许在必要时换一行 */
-    /* white-space: nowrap; /* 尝试不换行 */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    color: #ffffff;;  文本颜色可能需要根据背景图调整 */
+    line-height: 1.4;
 }
+
 
 /* Style for the separator between slots (dotted line) */
 .comparison-bar .comparison-slots-empty .slot-separator {
     width: 1px;
     height: 80%;
-    border-right: 1px dotted #ccc;
+    border-right: 1px dotted rgba(204, 204, 204, 0.5); /* 分隔线颜色可以调整透明度 */
     margin: 0 5px;
     flex-shrink: 0;
 }
 
-
 /* --- 选中状态下的信息和按钮样式 --- */
 .comparison-bar .selection-info {
     font-size: 1.1rem;
-    color: #333;
+    /* color: #333;  文本颜色可能需要根据背景图调整 */
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -109,7 +108,7 @@
 
 .comparison-bar .selection-info span {
     font-weight: bold;
-    color: #007bff;
+    color: #ffffff;  文本颜色可能需要根据背景图调整 */
     margin: 0 5px;
 }
 
@@ -125,27 +124,37 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
+    transition: background-color 0.2s ease, opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease; /* 添加颜色和边框颜色的过渡 */
+    /* --- 将按钮背景设为透明或半透明 --- */
+    background-color: transparent;  /* <-- 按钮背景设为透明 */
+    border: 1px solid;              /* 按钮边框保留，颜色需要根据背景图调整 */
+    color: inherit;  文本颜色继承父级或默认 
 }
 
 .comparison-bar .clear-button {
-    background-color: #f8f9fa;
-    color: #555;
-    border: 1px solid #ddd;
+    /* background-color: #f8f9fa;  移除明确背景色 */
+    color: #ffffff;                   /* 清空按钮文本颜色 */
+    border-color: #ddd;            /* 清空按钮边框颜色 */
 }
 
 .comparison-bar .clear-button:hover:not(:disabled) {
-    background-color: #e2e6ea;
+    background-color: rgba(226, 230, 234, 0.5); /* 悬停时可以加点半透明背景效果 */
+    border-color: rgba(226, 230, 234, 0.8);
 }
 
 /* --- 修改 Compare 按钮的颜色 --- */
 .comparison-bar .compare-button {
-    background-color: #4CAF50; /* 绿色背景，可以换成其他颜色 */
-    color: white;
+    /* background-color: rgba(0, 123, 255, 0.7);  移除明确背景色 */
+    color: white;                  /* 对比按钮文本颜色 */
+    border-color: white;           /* 对比按钮边框颜色 */
+    border-radius: 5px;            /* 统一按钮圆角，您的代码里对比按钮圆角设置有点奇怪 */
+    /* 文本阴影保留，可能有助于在复杂背景下显示 */
+    /* transition: background-color 0.2s ease, border-color 0.2s ease;  已在通用 button 规则中 */
 }
 
 .comparison-bar .compare-button:hover:not(:disabled) {
-    background-color: #388E3C; /* 悬停变深 */
+    background-color: rgba(255, 255, 255, 0.2); /* 悬停时加点半透明白色背景效果 */
+    border-color: white;
 }
 
 /* 禁用状态 (保持不变) */
@@ -154,31 +163,28 @@
     cursor: not-allowed;
 }
 
-/* 响应式调整 */
+/* 响应式调整 (保持不变) */
 @media (max-width: 768px) {
+    /* ... (响应式样式保持不变) ... */
     .comparison-bar {
         flex-direction: column;
         padding: 10px;
         align-items: stretch;
     }
-
-     .comparison-bar .comparison-content-left {
-         margin-right: 0;
-         margin-bottom: 10px;
-         justify-content: center;
-     }
-
-     .comparison-bar .actions {
-         width: 100%;
-         justify-content: space-around;
-         gap: 0;
-     }
-
-      .comparison-bar button {
-          flex-grow: 1;
-          margin: 0 5px;
-      }
-
+    .comparison-bar .comparison-content-left {
+        margin-right: 0;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+    .comparison-bar .actions {
+        width: 100%;
+        justify-content: space-around;
+        gap: 0;
+    }
+    .comparison-bar button {
+        flex-grow: 1;
+        margin: 0 5px;
+    }
     /* 小屏幕下空槽位布局调整 */
     .comparison-bar .comparison-slots-empty {
         flex-direction: column;
@@ -186,44 +192,40 @@
         width: auto;
         align-items: center;
     }
-     .comparison-bar .comparison-slots-empty .slot-title {
-         margin-right: 0;
-         margin-bottom: 5px;
-         text-align: center;
-     }
-    .comparison-bar .comparison-slots-empty .slots-container {
-         flex-direction: column;
-         gap: 5px;
-         width: 100%;
-         align-items: center;
+    .comparison-bar .comparison-slots-empty .slot-title {
+        margin-right: 0;
+        margin-bottom: 5px;
+        text-align: center;
     }
-
-      .comparison-bar .comparison-slots-empty .empty-slot {
-          width: 80%; /* 小屏幕下宽度 */
-          max-width: 180px;
-          height: 60px; /* 小屏幕下高度 */
-          flex-direction: row; /* 编号和文本 side-by-side */
-          justify-content: flex-start; /* Start from the left */
-          align-items: center; /* Center vertically */
-          padding: 5px 10px; /* Adjust padding */
-      }
-      .comparison-bar .comparison-slots-empty .slot-number {
-          font-size: 1.2rem;
-          margin-right: 10px; /* Space after number */
-          margin-bottom: 0;
-      }
-       .comparison-bar .comparison-slots-empty .slot-text {
-           font-size: 0.9rem;
-           text-align: left;
-           flex-grow: 1; /* Allow text to take space */
-           /* Ensure text doesn't overflow */
-           overflow: hidden;
-           text-overflow: ellipsis;
-           white-space: normal; /* Allow wrapping if necessary */
-       }
-
-       .comparison-bar .comparison-slots-empty .slot-separator {
-           display: none;
-       }
-
+    .comparison-bar .comparison-slots-empty .slots-container {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        align-items: center;
+    }
+    .comparison-bar .comparison-slots-empty .empty-slot {
+        width: 80%;
+        max-width: 180px;
+        height: 60px;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 5px 10px;
+    }
+    .comparison-bar .comparison-slots-empty .slot-number {
+        font-size: 1.2rem;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+    .comparison-bar .comparison-slots-empty .slot-text {
+        font-size: 0.9rem;
+        text-align: left;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+    .comparison-bar .comparison-slots-empty .slot-separator {
+        display: none;
+    }
 }

@@ -7,6 +7,7 @@ interface ComparisonBarProps {
     onClear: () => void; // 清空选中产品的回调函数
     onCompare: () => void; // 点击对比按钮的回调函数
     isCompareEnabled: boolean; // 控制对比按钮是否可用 (至少选中2个)
+    selectedProducts?: any[]; // 添加这个属性定义
     // 如果希望在槽位中显示已选中产品的名称，还需要传递一个包含选中产品信息的数组
     // selectedProductsInfo?: { id: number; 'Food Name': string }[]; // 示例
 }
@@ -16,11 +17,13 @@ const ComparisonBar: React.FC<ComparisonBarProps> = ({
     onClear,
     onCompare,
     isCompareEnabled,
-    // selectedProductsInfo // 如果需要显示名称，接收这个prop
+    selectedProducts = []
 }) => {
+    // 根据是否有选中的产品来决定是否添加 active 类
+    const barClassName = `comparison-bar${selectedCount > 0 ? ' active' : ''}`;
 
     return (
-        <div className="comparison-bar">
+        <div className={barClassName}>
             <div className="comparison-content-left">
                 {selectedCount === 0 ? (
                     // --- 空槽位状态的布局 ---
@@ -46,7 +49,7 @@ const ComparisonBar: React.FC<ComparisonBarProps> = ({
                 ) : (
                      // --- 选中状态下的信息显示 (保持不变) ---
                     <div className="selection-info">
-                         Selected <span>{selectedCount}</span> {selectedCount === 1 ? 'product' : 'products'} for comparison
+                        Selected&nbsp;<span>{selectedCount}</span>&nbsp;{selectedCount === 1 ? 'product' : 'products'} for comparison
                      </div>
                 )}
             </div>
