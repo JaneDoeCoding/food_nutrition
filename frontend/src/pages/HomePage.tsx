@@ -200,7 +200,7 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="results-container">
-            {loading && <div className="loading-message">加载中...</div>}
+            {loading && <div className="loading-message">Loading, thank you for your patience...</div>}
             {error && <div className="error-message">{error}</div>}
 
             {!loading && !error && searchResults.length > 0 && (
