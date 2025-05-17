@@ -1,5 +1,5 @@
 // src/pages/HomePage.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
 import ComparisonBar from '../components/ComparisonBar'; // 确保 ComparisonBar 已导入
@@ -101,43 +101,6 @@ const HomePage: React.FC = () => {
     }
   };
 
-   // 在组件挂载时加载全部产品（如果希望初始页面显示全部列表）
-   // 注意：如果您希望初始不显示列表，并且在搜索框为空时也不显示列表，可以删除这个 useEffect
-   // 如果希望在搜索框为空时显示全部列表，可以在 handleSearch 的 if (!searchTerm.trim()) {} 块中调用 fetchAllProducts
-   useEffect(() => {
-       const fetchAllProducts = async () => {
-            setLoading(true);
-            setError(null);
-            const backendUrl = 'https://newbackend-8mgs.onrender.com'; // 请确认后端地址
-            const endpoint = '/api/products';
-
-            try {
-                  const response = await fetch(`${backendUrl}${endpoint}`);
-                   if (!response.ok) {
-                       throw new Error(`HTTP error! status: ${response.status}`);
-                   }
-                   const data: Product[] | { message: string } = await response.json();
-                   if (Array.isArray(data)) {
-                       setSearchResults(data);
-                       setError(null);
-                   } else {
-                       console.error("Backend did not return an array for all products:", data);
-                       setError("Failed to load all products: Invalid data format.");
-                       setSearchResults([]);
-                   }
-             } catch (e) {
-                 console.error("Failed to fetch all products:", e);
-                 setError(`Failed to load products: ${e instanceof Error ? e.message : String(e)}`);
-                 setSearchResults([]);
-             } finally {
-                 setLoading(false);
-             }
-       };
-
-       // 如果希望组件加载时就获取全部产品，取消下面这行的注释
-       // fetchAllProducts();
-
-   }, []);
 
 
   // 添加或移除选中的产品 ID
@@ -177,10 +140,6 @@ const HomePage: React.FC = () => {
 
    // 判断对比按钮是否可用 (至少选中 2 个产品)
   const isCompareButtonEnabled = selectedProductIds.length >= 2;
-   // 判断复选框是否应该被禁用 (选中数量达到上限，且当前产品未选中)
-   const isCheckboxDisabled = (productId: string | number) => {
-        return selectedProductIds.length >= 4 && !selectedProductIds.includes(productId);
-   };
 
     return (
       <div

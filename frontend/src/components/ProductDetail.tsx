@@ -7,7 +7,7 @@ import './ProductDetail.css';
 import backgroundImage from '../assets/images/Page2.jpg';
 
 // 定义产品详细信息数据接口（需与后端接口返回字段一致）
-interface ProductDetailData {
+export interface ProductDetailData {
   id: number;
   'Food Name': string;
   Category?: string;
@@ -23,6 +23,7 @@ interface ProductDetailData {
   'Dietary Fiber'?: string | number;
   // ... 如果有更多字段，可以继续补充
 }
+
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // 从 URL 路径中获取产品 ID

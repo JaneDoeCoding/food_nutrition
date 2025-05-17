@@ -17,7 +17,7 @@ const ComparisonBar: React.FC<ComparisonBarProps> = ({
     onClear,
     onCompare,
     isCompareEnabled,
-    selectedProducts = []
+    // selectedProducts = []
 }) => {
     // 根据是否有选中的产品来决定是否添加 active 类
     const barClassName = `comparison-bar${selectedCount > 0 ? ' active' : ''}`;

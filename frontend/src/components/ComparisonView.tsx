@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './ComparisonView.css';
 import Page2Image from '../assets/images/Page3.jpg';
+import type { ProductDetailData } from './ProductDetail'; // 路径根据你的文件实际相对路径调整
+
 
 // ... (ProductDetailData 接口定义保持不变) ...
 
@@ -104,7 +106,6 @@ const ComparisonView: React.FC = () => {
         'Ash',
         'Carbohydrates',
         'Dietary Fiber',
-        'Alias',
     ];
     const fieldsToDisplay = detailFields.filter(field => firstProduct.hasOwnProperty(field));
 
@@ -135,21 +136,21 @@ const ComparisonView: React.FC = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {fieldsToDisplay.map(field => (
-                    <tr key={field as string}>
-                    <td>{field}</td>
-                    {comparedProducts.map(product => (
-                        <td key={product.id}>
-                        {(product[field] !== undefined &&
-                            product[field] !== null &&
-                            product[field] !== '')
-                            ? (product[field] as React.ReactNode)
-                            : 'N/A'}
-                        </td>
+                    {fieldsToDisplay.map(field => (
+                        <tr key={String(field)}>
+                        <td>{String(field)}</td>
+                        {comparedProducts.map(product => (
+                            <td key={product.id}>
+                            {(product[field] !== undefined &&
+                                product[field] !== null &&
+                                product[field] !== '')
+                                ? String(product[field])
+                                : 'N/A'}
+                            </td>
+                        ))}
+                        </tr>
                     ))}
-                    </tr>
-                ))}
-                </tbody>
+                    </tbody>
             </table>
             </div>
         </div>

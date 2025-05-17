@@ -37,7 +37,7 @@
 .comparison-bar .comparison-slots-empty .slot-title {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #ffffff;  文本颜色可能需要根据背景图调整 
+    color: #ffffff;  
     margin-right: 15px;
     flex-shrink: 0;
 }
@@ -63,7 +63,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    color: #ffffff;  文本颜色可能需要根据背景图调整 */
+    color: #ffffff;  
     box-sizing: border-box;
     padding: 8px 5px;
     text-align: center;
@@ -75,7 +75,7 @@
 .comparison-bar .comparison-slots-empty .slot-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ffffff;  编号颜色可能需要根据背景图调整 
+    color: #ffffff;  
     margin-bottom: 3px;
 }
 
@@ -83,7 +83,7 @@
 .comparison-bar .comparison-slots-empty .slot-text {
     font-family: 'Roboto', sans-serif;
     font-size: 0.85rem;
-    color: #ffffff;;  文本颜色可能需要根据背景图调整 */
+    color: #ffffff;;  
     line-height: 1.4;
 }
 
@@ -100,7 +100,7 @@
 /* --- 选中状态下的信息和按钮样式 --- */
 .comparison-bar .selection-info {
     font-size: 1.1rem;
-    /* color: #333;  文本颜色可能需要根据背景图调整 */
+    /* color: #333;   */
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -108,7 +108,7 @@
 
 .comparison-bar .selection-info span {
     font-weight: bold;
-    color: #ffffff;  文本颜色可能需要根据背景图调整 */
+    color: #ffffff;  
     margin: 0 5px;
 }
 
@@ -128,7 +128,7 @@
     /* --- 将按钮背景设为透明或半透明 --- */
     background-color: transparent;  /* <-- 按钮背景设为透明 */
     border: 1px solid;              /* 按钮边框保留，颜色需要根据背景图调整 */
-    color: inherit;  文本颜色继承父级或默认 
+    color: inherit;  
 }
 
 .comparison-bar .clear-button {
